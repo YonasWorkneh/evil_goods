@@ -1,14 +1,145 @@
 <div class="dropdown">
-  <div class="dropdown__container">
-    {% for block in section.blocks %}
-      <div class="dropdown__video" {{ block.shopify_attributes }}>
-                <div class="dropdown__title-wrapper">
-          {% if block.settings.title != blank %}
-                        <div class="video-section__title hidden">{{ block.settings.title }}</div>
-          {% endif %}
-          <div class="dropdown__content hidden">{{ block.settings.content }}</div>
+  {% for block in section.blocks %}
+    <div class="dropdown-item">
+      <div class="dropdown-header">
+        <div class="dropdown-header-content">
+        {{ block.settings.icon }} <!-- Dynamic SVG Icon -->
+        <h3>{{ block.settings.title }}</h3>
         </div>
+        <button class="dropdown-icon">
+          +
+        </button>
       </div>
-    {% endfor %}
-  </div>
+      <div class="dropdown-content hidden">
+        <p>{{ block.settings.content }}</p>
+      </div>
+    </div>
+  {% endfor %}
 </div>
+
+<style>
+.dropdown{
+    padding: 10px 20px;
+}
+.dropdown-item{
+    {% comment %} border: 1px solid #ddd; {% endcomment %}
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.11);
+    margin-bottom: 10px;
+    padding: 0px 10px;
+}
+.dropdown-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+    font-size: 13px;
+}
+.hidden{
+    display: none;
+}
+  .dropdown-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: rgba(255, 229, 53, 1);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  .dropdown-header-content{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dropdown-header-content svg{
+    width: 24px;
+    height: 24px;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Dropdown",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "dropdown",
+      "name": "Dropdown Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Dropdown Title"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "default": "Dropdown content goes here."
+        },
+        {
+          "type": "html",
+          "id": "icon",
+          "label": "SVG Icon",
+          "default": "<span>hey</span>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dropdown",
+      "blocks": [
+        {
+          "type": "dropdown",
+          "settings": {
+            "title": "Product Description",
+            "content": "Discover the perfect blend of quality and innovation with Random Cosmetics. Designed for all skin types, this premium cosmetic line offers a flawless finish, long-lasting wear, and skin-nourishing ingredients.",
+            "icon": "<span>hey</span>"
+          }
+        },
+        {
+          "type": "dropdown",
+          "settings": {
+            "title": "Shipping Information",
+            "content": "Orders are processed within 1-2 business days, and delivery typically takes 3-7 business days.",
+            "icon": "<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9.60589 17.0357C9.63157 17.0304 9.65644 17.0218 9.67982 17.0099C9.70496 16.9973 9.72962 16.9836 9.75375 16.9691L15.5366 13.6751C15.8815 13.4781 16.1434 13.2528 16.3231 12.9995C16.5031 12.7456 16.5928 12.3505 16.5928 11.8141V6.06048C16.5928 5.83388 16.5732 5.64681 16.5336 5.49895L9.60589 9.45798V17.0357ZM8.59404 17.0357V9.45798L1.66629 5.49895C1.62643 5.64681 1.60714 5.83388 1.60714 6.06048V11.8141C1.60714 12.3508 1.69811 12.7459 1.88036 12.9995C2.06261 13.2528 2.32361 13.4784 2.66336 13.6751L8.45357 16.9691C8.478 16.9839 8.50147 16.9974 8.52364 17.0099C8.54552 17.0221 8.56948 17.0308 8.59404 17.0357ZM9.1035 8.57148L12.257 6.78434L5.26275 2.78866L2.55214 4.33216C2.385 4.4257 2.24679 4.52181 2.13846 4.62016L9.1035 8.57148ZM13.2837 6.20063L16.0608 4.62016C15.9361 4.50994 15.7999 4.41339 15.6545 4.33216L10.4406 1.36313C9.98261 1.0973 9.53679 0.964233 9.1035 0.964233C8.66539 0.964233 8.21732 1.0973 7.75961 1.3628L6.26014 2.21234L13.2837 6.20063Z' fill='black'/></svg>"
+          }
+        },
+        {
+          "type": "dropdown",
+          "settings": {
+            "title": "Frequently Asked Questions",
+            "content": "1. Do you offer a 30-day money-back guarantee on all products.",
+            "icon": "<svg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M9 1.125C11.0886 1.125 13.0916 1.95469 14.5685 3.43153C16.0453 4.90838 16.875 6.91142 16.875 9C16.875 11.0886 16.0453 13.0916 14.5685 14.5685C13.0916 16.0453 11.0886 16.875 9 16.875C6.91142 16.875 4.90838 16.0453 3.43153 14.5685C1.95469 13.0916 1.125 11.0886 1.125 9C1.125 6.91142 1.95469 4.90838 3.43153 3.43153C4.90838 1.95469 6.91142 1.125 9 1.125ZM9.41738 4.491C8.50163 4.491 7.78387 4.75087 7.25175 5.27063C6.70725 5.79037 6.44737 6.50812 6.44737 7.42387H7.85813C7.85813 6.90412 7.95713 6.49575 8.1675 6.21112C8.40263 5.86462 8.78625 5.70375 9.33075 5.70375C9.7515 5.70375 10.0856 5.81512 10.3207 6.05025C10.5435 6.28537 10.6673 6.60713 10.6673 7.0155C10.6673 7.32487 10.5559 7.62188 10.3331 7.89412L10.1846 8.06738C9.38025 8.78512 8.89762 9.30487 8.73675 9.639C8.5635 9.97312 8.48925 10.3815 8.48925 10.8517V11.025H9.91237V10.8517C9.91237 10.5547 9.97425 10.2949 10.098 10.0474C10.2094 9.82463 10.3703 9.61425 10.593 9.42862C11.187 8.90887 11.5459 8.57475 11.6573 8.451C11.9543 8.055 12.1151 7.54763 12.1151 6.92887C12.1151 6.174 11.8676 5.58 11.3726 5.14687C10.8776 4.70137 10.2218 4.491 9.41738 4.491ZM9.19463 11.6314C8.9423 11.6245 8.69756 11.718 8.514 11.8912C8.42338 11.9766 8.35216 12.0805 8.30519 12.1958C8.25822 12.3111 8.23658 12.4351 8.24175 12.5595C8.24175 12.8317 8.32837 13.0545 8.514 13.2278C8.69618 13.4046 8.94075 13.5024 9.19463 13.5C9.46688 13.5 9.68962 13.4134 9.87525 13.2401C9.9678 13.153 10.041 13.0474 10.09 12.9301C10.139 12.8128 10.1629 12.6866 10.1599 12.5595C10.1622 12.4355 10.1393 12.3122 10.0925 12.1974C10.0457 12.0825 9.976 11.9783 9.88762 11.8912C9.69929 11.7177 9.45066 11.6244 9.19463 11.6314Z' fill='black'/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

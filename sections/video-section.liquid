@@ -107,30 +107,52 @@
 {% schema %}
 {
   "name": "Video Section",
-  "tag": "section",
-  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 36
+    }
+  ],
   "blocks": [
     {
       "type": "video",
-      "name": "Video",
-      "limit": 3,
+      "name": "Video Item",
       "settings": [
         {
-          "type": "video",
+          "type": "video_url",
           "id": "video",
-          "label": "Video",
-          "info": "Upload or select a video"
+          "label": "Video URL",
+          "accept": ["youtube", "vimeo"]
         },
         {
           "type": "image_picker",
           "id": "cover_image",
-          "label": "Cover Image",
-          "info": "Displayed before video plays"
+          "label": "Cover Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Video Title",
+          "default": "Video Title"
         },
         {
           "type": "text",
           "id": "duration",
-          "label": "Duration",
+          "label": "Video Duration",
           "default": "0:24"
         }
       ]
@@ -141,16 +163,34 @@
       "name": "Video Section",
       "blocks": [
         {
-          "type": "video"
+          "type": "video",
+          "settings": {
+            "video": "",
+            "cover_image": "",
+            "title": "5 Main Benefits",
+            "duration": "0:24"
+          }
         },
         {
-          "type": "video"
+          "type": "video",
+          "settings": {
+            "video": "",
+            "cover_image": "",
+            "title": "How to Use",
+            "duration": "0:24"
+          }
         },
         {
-          "type": "video"
+          "type": "video",
+          "settings": {
+            "video": "",
+            "cover_image": "",
+            "title": "Ingredients",
+            "duration": "0:24"
+          }
         }
       ]
     }
   ]
 }
-{% endschema %} 
+{% endschema %}
