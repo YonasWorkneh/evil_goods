@@ -59,36 +59,23 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const toggleButtons = document.querySelectorAll('.dropdown-icon');
-  toggleButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      const dropdownItem = button.closest('.dropdown-item');
-      const content = dropdownItem.querySelector('.dropdown-content');  
-      const contents = document.querySelectorAll('.dropdown-content');
-      contents.forEach(content => {
-        if(content.dataset.src !== button.dataset.src){
-          content.classList.add('hidden');
-        }
-      });
-      if(button.textContent === '+'){
-        content.classList.remove('hidden'); 
-        button.textContent = "-";
-      }else{
-        content.classList.add('hidden');
-        button.textContent = "+";
-      }
-    });
-  });
   
   // Close dropdowns when clicking outside
   document.addEventListener('click', (e) => {
-    if (!e.target.closest('.dropdown-item')) {  
+    const dropdownItem = e.target.closest('.dropdown-item');
+    const content = dropdownItem.querySelector('.dropdown-content');
+    const button = dropdownItem.querySelector('.dropdown-icon');
+
+    if (!dropdownItem) {  
       document.querySelectorAll('.dropdown-content').forEach(content => {
         content.classList.add('hidden');
       });
       document.querySelectorAll('.dropdown-icon').forEach(button => {
         button.textContent = '+';   
       });
+    } else {
+      content.classList.toggle('hidden');
+      button.textContent = "-";
     }
   });
 });
