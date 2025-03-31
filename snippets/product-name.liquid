@@ -1,0 +1,25 @@
+{%- comment -%}
+  Product name snippet with customizable text
+  Usage: {% render 'product-name', product_name: 'WHIPPED TALLOW HONEY BALM' %}
+{%- endcomment -%}
+
+{% assign product_name = product_name | default: 'WHIPPED TALLOW HONEY BALM' %}
+
+<div class="product-name">
+  <h1 class="product-name__text">{{ product_name }}</h1>
+</div>
+
+<style>
+  .product-name {
+    padding: 0 20px;
+  }
+
+  .product-name__text {
+    font-size: 70px;
+    font-weight: 900;
+    color: rgba(29, 33, 30, 1);
+    text-transform: uppercase;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style> 

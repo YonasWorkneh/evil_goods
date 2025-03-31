@@ -1,0 +1,66 @@
+{%- comment -%}
+  Rating section snippet with customizable rating and customer count
+  Usage: {% render 'rating-section', rating: 4.9, customer_count: 100 %}
+{%- endcomment -%}
+
+{% assign rating = rating | default: 4.9 %}
+{% assign customer_count = customer_count | default: 100 %}
+
+<div class="rating-section">
+  <div class="stars">
+    {% for i in (1..5) %}
+      <svg class="star" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFD700"/>
+      </svg>
+    {% endfor %}
+  </div>
+  <div class="rating-text">
+    Rated <span class="rating-text__rating">{{ rating }}/5</span> by <span class="underline" > <span class="customer-count">{{ customer_count }}+</span> Happy Customers</span>
+  </div>
+</div>
+
+<style>
+  .rating-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .stars {
+    display: flex;
+    gap: 4px;
+  }
+
+  .star {
+    transition: transform 0.2s ease;
+  }
+
+  .star:hover {
+    transform: scale(1.1);
+  }
+
+  .rating-text {
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    font-weight: 500;
+  }
+  .rating-text__rating{
+    font-weight: 700;
+  }
+  .customer-count{
+    font-weight: 700;
+  }
+  .underline{
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .rating-section {
+      bottom: 60px;
+      padding: 12px;
+    }
+  }
+</style> 
