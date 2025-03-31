@@ -1,0 +1,136 @@
+{%- comment -%}
+  Bundle and save snippet with three customizable products
+  Usage: {% render 'bundle-save' %}
+{%- endcomment -%}
+<div class="bundle-save">
+  <h2 class="bundle-save__title">BUNDLE & SAVE:</h2>
+  
+  <div class="bundle-save__products">
+    <div class="bundle-save__product">
+      <div class="bundle-save__product-image">
+        <img src="{{ 'product.jpg' | asset_url }}" alt="Product 1" loading="lazy">
+      </div>
+      <div class="bundle-save__product-content">
+        <h3 class="bundle-save__product-title">Whipped Tallow Honey Balm</h3>
+        <p class="bundle-save__product-description">All-natural face & body cream with anti-inflammatory & anti-aging effects</p>
+        <div class="bundle-save__product-price">$39.99</div>
+      </div>
+    </div>
+
+    <div class="bundle-save__product bundle-save__product--preferred">
+      <div class="bundle-save__product-image">
+        <img src="{{ 'product2.jpg' | asset_url }}" alt="Product 2" loading="lazy">
+      </div>
+      <div class="bundle-save__product-content">
+        <h3 class="bundle-save__product-title">Tallow Face Serum</h3>
+        <p class="bundle-save__product-description">Rich in vitamins A, D, E, K, and B1 for optimal skin health</p>
+        <div class="bundle-save__product-price">$49.99</div>
+        <div class="bundle-save__preferred">Popular</div>
+      </div>
+    </div>
+
+    <div class="bundle-save__product">
+      <div class="bundle-save__product-image">
+        <img src="{{ 'product3.jpg' | asset_url }}" alt="Product 3" loading="lazy">
+      </div>
+      <div class="bundle-save__product-content">
+        <h3 class="bundle-save__product-title">Tallow Eye Cream</h3>
+        <p class="bundle-save__product-description">Gentle formula for sensitive eye area with anti-aging benefits</p>
+        <div class="bundle-save__product-price">$34.99</div>
+        <div class="bundle-save__preferred">Best offer</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .bundle-save {
+    padding: 40px 20px;
+    margin: 40px 0;
+  }
+
+  .bundle-save__title {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    color: #333;
+  }
+
+  .bundle-save__products {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .bundle-save__product {
+    flex: 1;
+    max-width: 320px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    background: white;
+  }
+
+  .bundle-save__product:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .bundle-save__product--preferred {
+    border: 2px solid rgba(255, 229, 53, 1);
+    position: relative;
+  }
+
+  .bundle-save__product-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .bundle-save__product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .bundle-save__product-content {
+    padding: 20px;
+  }
+
+  .bundle-save__product-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .bundle-save__product-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .bundle-save__product-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .bundle-save__preferred {
+    position: absolute;
+    top: 0;
+    left:0;
+    background-color: rgba(255, 229, 53, 1);
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 8px;
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+</style> 
