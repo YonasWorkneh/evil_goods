@@ -5,30 +5,24 @@
 
 {% assign original_price = original_price | default: 69.99 %}
 {% assign discounted_price = discounted_price | default: 39.99 %}
-
+{% assign discount_percentage = discount_percentage | default: 50 %}
 <div class="discount-price">
   <div class="discount-price__container">
     <span class="discount-price__original">${{ original_price }}</span>
     <span class="discount-price__current">${{ discounted_price }}</span>
+    <span class="discount-price__percentage">Save {{ discount_percentage }}%</span>
   </div>
 </div>
 
 <style>
   .discount-price {
-    position: absolute;
-    top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 25000;
-    text-align: center;
-    padding: 0 20px;
+    padding: 10px 20px;
   }
 
   .discount-price__container {
     display: flex;
     align-items: center;
     gap: 12px;
-    justify-content: center;
   }
 
   .discount-price__original {
@@ -39,20 +33,16 @@
   }
 
   .discount-price__current {
-    font-size: 32px;
+    font-size: 24px;
     color: #333;
     font-weight: 700;
     padding-bottom: 4px;
     border-bottom: 2px solid #333;
   }
-
-  @media screen and (max-width: 768px) {
-    .discount-price__original {
-      font-size: 20px;
-    }
-    
-    .discount-price__current {
-      font-size: 28px;
-    }
+  .discount-price__percentage {
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color: rgba(255, 229, 53, 1);
+    padding: .5px 1rem;
   }
 </style> 
