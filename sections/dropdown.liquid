@@ -10,7 +10,7 @@
           +
         </button>
       </div>
-      <div class="dropdown-content hidden">
+      <div class="dropdown-content hidden" data-src="{{ block.settings.title }}">
         <p>{{ block.settings.content }}</p>
       </div>
     </div>
@@ -41,8 +41,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 24px;
-    height: 24px;
     border-radius: 50%;
     background: rgba(255, 229, 53, 1);
     border: none;
@@ -55,11 +53,41 @@
     align-items: center;
     gap: 10px;
   }
-  .dropdown-header-content svg{
-    width: 24px;
-    height: 24px;
-  }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButtons = document.querySelectorAll('.dropdown-icon');
+  console.log(toggleButtons);
+  toggleButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      console.log(e);
+      const dropdownItem = button.closest('.dropdown-item');
+      const content = dropdownItem.querySelector('.dropdown-content');  
+      const contents = document.querySelectorAll('.dropdown-content');
+      contents.forEach(content => {
+        if(content.dataset.src !== button.dataset.src){
+          content.classList.add('hidden');
+        }
+      });
+      content.classList.toggle('hidden'); 
+      button.textContent = content.classList.contains("hidden")? '-' : '+';
+    });
+  });
+  
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown-item')) {  
+      document.querySelectorAll('.dropdown-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+      document.querySelectorAll('.dropdown-icon').forEach(button => {
+        button.textContent = '+';   
+      });
+    }
+  });
+});
+</script>
 
 {% schema %}
 {
@@ -105,7 +133,7 @@
           "type": "html",
           "id": "icon",
           "label": "SVG Icon",
-          "default": "<span>hey</span>"
+          "default": "<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M12 4L4 12H20L12 4Z' fill='black'/></svg>"
         }
       ]
     }
@@ -119,7 +147,7 @@
           "settings": {
             "title": "Product Description",
             "content": "Discover the perfect blend of quality and innovation with Random Cosmetics. Designed for all skin types, this premium cosmetic line offers a flawless finish, long-lasting wear, and skin-nourishing ingredients.",
-            "icon": "<span>hey</span>"
+            "icon": "<svg width='12' height='16' viewBox='0 0 12 16' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M2.99927 12.4985H8.99927V10.9985H2.99927V12.4985ZM2.99927 9.49854H8.99927V7.99854H2.99927V9.49854ZM1.49927 15.4985C1.08677 15.4985 0.733767 15.3518 0.440267 15.0583C0.146767 14.7648 -0.000232422 14.4115 -0.000732422 13.9985V1.99854C-0.000732422 1.58604 0.146267 1.23304 0.440267 0.939535C0.734267 0.646035 1.08727 0.499035 1.49927 0.498535H7.49927L11.9993 4.99854V13.9985C11.9993 14.411 11.8525 14.7643 11.559 15.0583C11.2655 15.3523 10.9123 15.499 10.4993 15.4985H1.49927ZM6.74927 5.74854H10.4993L6.74927 1.99854V5.74854Z' fill='black'/></svg>"
           }
         },
         {

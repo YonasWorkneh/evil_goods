@@ -21,8 +21,8 @@
             </svg>
           </div>
           <div class="video-section__duration">{{ block.settings.duration }}</div>
-            <div class="video-section__title">{{ block.settings.title }}</div>
         </div>
+        <div class="video-section__title">{{ block.settings.title }}</div>
       </div>
     {% endfor %}
   </div>
@@ -41,23 +41,20 @@
   }
 
   .video-section__video {
-    flex: 1;
-    aspect-ratio: 16/9;
-    max-width: 400px;
-    height: 230px;
+    height: 250px;
     position: relative;
     border-radius: 4px;
-    overflow: hidden;
-    background-color: #333;
   }
 
   .video-section__video-wrapper {
-    width: 100%;
+    width: 130px;
+    border-radius: 4px;
     height: 230px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #333;
     border-bottom:4px solid rgba(241, 196, 15, 1);
   }
 
