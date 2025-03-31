@@ -6,41 +6,66 @@
   <h2 class="bundle-save__title">BUNDLE & SAVE:</h2>
   
   <div class="bundle-save__products">
-    <div class="bundle-save__product">
-      <div class="bundle-save__product-image">
-        <img src="{{ 'product.jpg' | asset_url }}" alt="Product 1" loading="lazy">
-      </div>
+    <div class="bundle-save__product bundle-save__product--preferred">
       <div class="bundle-save__product-content">
-        <h3 class="bundle-save__product-title">Whipped Tallow Honey Balm</h3>
-        <p class="bundle-save__product-description">All-natural face & body cream with anti-inflammatory & anti-aging effects</p>
-        <div class="bundle-save__product-price">$39.99</div>
+        <h3 class="bundle-save__product-title">1 month supply</h3>
+         <div class="bundle-save__product-price">
+          <span class="bundle-save__product-price-original">$69.99</span>
+          <span class="bundle-save__product-price-discount">$39.99</span>
+        </div>
+      </div>
+      <div class="bundle-save__product-image">
+        <img src="{{ 'product.png' | asset_url }}" alt="Product 1" loading="lazy">
       </div>
     </div>
 
-    <div class="bundle-save__product bundle-save__product--preferred">
-      <div class="bundle-save__product-image">
-        <img src="{{ 'product2.jpg' | asset_url }}" alt="Product 2" loading="lazy">
-      </div>
+    <div class="bundle-save__product">
       <div class="bundle-save__product-content">
-        <h3 class="bundle-save__product-title">Tallow Face Serum</h3>
-        <p class="bundle-save__product-description">Rich in vitamins A, D, E, K, and B1 for optimal skin health</p>
-        <div class="bundle-save__product-price">$49.99</div>
+        <h3 class="bundle-save__product-title">3 month supply</h3>
+              <div class="bundle-save__product-price">
+          <span class="bundle-save__product-price-original">$89.99</span>
+          <span class="bundle-save__product-price-discount">$54.99</span>
+        </div>
         <div class="bundle-save__preferred">Popular</div>
       </div>
+      <div class="bundle-save__product-image">
+        <img src="{{ 'product.png' | asset_url }}" alt="Product 2" loading="lazy" class="bundle-save__product-image-1">
+        <img src="{{ 'product.png' | asset_url }}" alt="Product 2" loading="lazy" class="bundle-save__product-image-2">
+    </div>
     </div>
 
     <div class="bundle-save__product">
-      <div class="bundle-save__product-image">
-        <img src="{{ 'product3.jpg' | asset_url }}" alt="Product 3" loading="lazy">
-      </div>
       <div class="bundle-save__product-content">
-        <h3 class="bundle-save__product-title">Tallow Eye Cream</h3>
-        <p class="bundle-save__product-description">Gentle formula for sensitive eye area with anti-aging benefits</p>
-        <div class="bundle-save__product-price">$34.99</div>
+        <h3 class="bundle-save__product-title">6 month supply</h3>
+        <div class="bundle-save__product-price">
+          <span class="bundle-save__product-price-original">$99.99</span>
+          <span class="bundle-save__product-price-discount">$69.99</span>
+        </div>
         <div class="bundle-save__preferred">Best offer</div>
       </div>
+       <div class="bundle-save__product-image">
+        <img src="{{ 'product.png' | asset_url }}" alt="Product 2" loading="lazy" class="bundle-save__product-image-1">
+        <img src="{{ 'product.png' | asset_url }}" alt="Product 2" loading="lazy" class="bundle-save__product-image-2">
+        <img src="{{ 'product.png' | asset_url }}" alt="Product 2" loading="lazy" class="bundle-save__product-image-3">
+    </div>
     </div>
   </div>
+
+  <div class="bundle-save__delivery">
+
+    <p>Order today and get it by Wed, Feb 20</p>
+  </div>
+
+  <button class="bundle-save__add-to-cart" onclick="addToCart()">
+    <span class="bundle-save__cart-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M9 20C9 21.1046 8.10457 22 7 22C5.89543 22 5 21.1046 5 20C5 18.8954 5.89543 18 7 18C8.10457 18 9 18.8954 9 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M20 20C20 21.1046 19.1046 22 18 22C16.8954 22 16 21.1046 16 20C16 18.8954 16.8954 18 18 18C19.1046 18 20 18.8954 20 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+    Add to Cart
+  </button>
 </div>
 
 <style>
@@ -65,56 +90,74 @@
 
   .bundle-save__product {
     flex: 1;
-    max-width: 320px;
     border: 1px solid #ddd;
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;
     background: white;
+    position: relative;
   }
 
-  .bundle-save__product:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  .bundle-save__product:has(.bundle-save__preferred) {
+    padding-top:15px;
+  }
+
+  .bundle-save__product-image-2 {
+    margin-left: -30px;
   }
 
   .bundle-save__product--preferred {
-    border: 2px solid rgba(255, 229, 53, 1);
+    border-color: rgb(0, 0, 0);
+    border-bottom-width: 4px;
     position: relative;
+  }
+
+  .bundle-save__product-price-original{
+    text-decoration: line-through;
+    color: #666;
   }
 
   .bundle-save__product-image {
     width: 100%;
-    height: 200px;
+    height: 100px;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 
   .bundle-save__product-image img {
-    width: 100%;
+    width: 70px;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
+
+  .bundle-save__product-image-3 {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .bundle-save__product-content {
-    padding: 20px;
+    padding: 5px;
   }
 
   .bundle-save__product-title {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
-  }
-
-  .bundle-save__product-description {
-    font-size: 14px;
-    color: #666;
-    line-height: 1.5;
-    margin-bottom: 16px;
+    text-align: center;
   }
 
   .bundle-save__product-price {
-    font-size: 20px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
     font-weight: 700;
     color: #333;
   }
@@ -123,14 +166,84 @@
     position: absolute;
     top: 0;
     left:0;
-    background-color: rgba(255, 229, 53, 1);
+    background-color: rgba(254, 219, 54, 1);
     color: #333;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 900;
     padding: 4px 8px;
     text-align: center;
     text-transform: uppercase;
     width: 100%;
   }
 
-</style> 
+  .bundle-save__delivery {
+    background-color: #ddd;
+    border-radius: 8px;
+    padding: 12px 20px;
+    margin: 20px auto;
+    text-align: center;
+    max-width: 400px;
+  }
+
+  .bundle-save__delivery p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .bundle-save__add-to-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: rgba(255, 229, 53, 1);
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .bundle-save__add-to-cart:hover {
+    background-color: #444;
+  }
+
+  .bundle-save__cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bundle-save__cart-count {
+    background-color: rgba(254, 219, 54, 1);
+    color: #333;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+  }
+</style>
+
+<script>
+  let cartCount = 0;
+  
+  function addToCart() {
+    cartCount++;
+    document.querySelector('.bundle-save__cart-count').textContent = cartCount;
+    
+    // Add animation to cart count
+    const cartCountElement = document.querySelector('.bundle-save__cart-count');
+    cartCountElement.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+      cartCountElement.style.transform = 'scale(1)';
+    }, 200);
+  }
+</script> 
