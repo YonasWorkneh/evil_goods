@@ -58,10 +58,8 @@
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const toggleButtons = document.querySelectorAll('.dropdown-icon');
-  console.log(toggleButtons);
   toggleButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-      console.log(e);
       const dropdownItem = button.closest('.dropdown-item');
       const content = dropdownItem.querySelector('.dropdown-content');  
       const contents = document.querySelectorAll('.dropdown-content');
@@ -70,8 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
           content.classList.add('hidden');
         }
       });
-      content.classList.toggle('hidden'); 
-      button.textContent = content.classList.contains("hidden")? '-' : '+';
+      if(button.textContent === '+'){
+        content.classList.remove('hidden'); 
+        button.textContent = "-";
+      }else{
+        content.classList.add('hidden');
+        button.textContent = "+";
+      }
     });
   });
   
