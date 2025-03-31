@@ -1,0 +1,212 @@
+{%- comment -%}
+  Frequency selector snippet with radio inputs
+  Usage: {% render 'frequency-selector' %}
+{%- endcomment -%}
+
+<div class="frequency-selector">
+  <div class="frequency-selector__header">
+    <h3 class="frequency-selector__title">Frequency</h3>
+    <p class="frequency-selector__subtitle">
+    <span class="frequency-selector__circle">?</span>
+    <span class="frequency-selector__subtitle-text">Subscription Details</span>
+    </p>
+  </div>
+  
+  <div class="frequency-selector__options">
+    <label class="frequency-selector__option">
+      <div class="frequency-selector__option-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+      <div class="frequency-selector__radio">
+        <input type="radio" name="frequency" value="one-time" checked>
+        <span class="frequency-selector__radio-custom"></span>
+      </div>
+        <span class="frequency-selector__option-title">One-time purchase</span>
+      </div>
+        <span class="frequency-selector__option-price">$33.99</span>
+      </div>
+    </label>
+
+    <label class="frequency-selector__option">
+      
+      <div class="frequency-selector__option-content">
+      <div style="display: flex; align-items: center; gap: 10px;">
+      <div class="frequency-selector__radio">
+        <input type="radio" name="frequency" value="subscribe">
+        <span class="frequency-selector__radio-custom"></span>
+      </div>
+        <span class="frequency-selector__option-title">Subscribe</span>
+        <span class="frequency-selector__option-savings">Save 15%</span>
+      </div>
+      <div>
+      <span class="frequency-selector__option-price line-through">$39.99</span>
+        <span class="frequency-selector__option-price">$33.99</span>
+      </div>
+      </div>
+    </label>
+  </div>
+</div>
+
+<style>
+  .frequency-selector {
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  .frequency-selector__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .frequency-selector__title {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+ .line-through {
+    text-decoration: line-through;
+    color: rgba(51, 51, 51, 0.49);
+ }
+  .frequency-selector__circle {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #777;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .frequency-selector__subtitle-text {
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .frequency-selector__subtitle {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: rgba(51, 51, 51, 0.49);
+    margin: 0;
+  }
+
+  .frequency-selector__options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .frequency-selector__option {
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .frequency-selector__radio {
+    position: relative;
+    width: 20px;
+    height: 20px;
+  }
+
+  .frequency-selector__radio input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .frequency-selector__radio-custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    background-color: white;
+    transition: all 0.2s ease;
+  }
+
+  .frequency-selector__radio input[type="radio"]:checked + .frequency-selector__radio-custom {
+    border-color:rgba(255, 229, 53, 1);
+    background-color: rgba(255, 229, 53, 1);
+    box-shadow: 0 0 0 4px white inset;
+  }
+
+  .frequency-selector__option-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+  }
+
+  .frequency-selector__option input[type="radio"]:checked ~ .frequency-selector__option-content {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+    background-color: rgba(76, 175, 80, 0.05);
+  }
+
+  .frequency-selector__option-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .frequency-selector__option-price {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .frequency-selector__option-savings {
+    font-size: 14px;
+    font-weight: 700;
+    background-color: rgba(255, 229, 53, 1);
+    padding: 4px 8px;
+    margin-left: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .frequency-selector__title {
+      font-size: 16px;
+    }
+    
+    .frequency-selector__option-title,
+    .frequency-selector__option-price {
+      font-size: 14px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const radioButtons = document.querySelectorAll('.frequency-selector__option input[type="radio"]');
+    
+    radioButtons.forEach(radio => {
+      radio.addEventListener('change', function() {
+        // Remove checked class from all options
+        document.querySelectorAll('.frequency-selector__option-content').forEach(content => {
+          content.classList.remove('checked');
+        });
+        
+        // Add checked class to selected option
+        if (this.checked) {
+          this.nextElementSibling.classList.add('checked');
+        }
+      });
+    });
+  });
+</script> 

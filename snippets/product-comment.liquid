@@ -1,0 +1,67 @@
+{%- comment -%}
+  Product comment snippet with title and qualities list
+  Usage: {% render 'product-comment' %}
+{%- endcomment -%}
+
+<div class="product-comment">
+  <h2 class="product-comment__title"><span class="uppercase">Holly cow!</span> This is what lotion should be!</h2>
+  <ul class="product-comment__list">
+    <li class="product-comment__item">
+      <svg class="product-comment__check" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>All-natural face & body cream</span>
+    </li>
+    <li class="product-comment__item">
+      <svg class="product-comment__check" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Anti-inflammatory & Anti-aging effects</span>
+    </li>
+    <li class="product-comment__item">
+      <svg class="product-comment__check" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Rich in vitamins A, D, E, K, and B1</span>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .product-comment {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0;
+  }
+    .uppercase{
+        text-transform: uppercase;
+    }
+  .product-comment__title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  .product-comment__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .product-comment__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(51, 51, 51, 0.8);
+    font-size: 16px;
+  }
+
+  .product-comment__check {
+    flex-shrink: 0;
+  }
+</style> 
