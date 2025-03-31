@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeButton = document.querySelector('.header__close-button');
   const navWrapper = document.querySelector('.header__nav-wrapper');
   
-  function toggleMenu(isOpen) {
+  {% comment %} function toggleMenu(isOpen) {
     const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', isOpen);
     navWrapper.classList.toggle('active', isOpen);
@@ -301,6 +301,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (e.key === 'Escape' && navWrapper.classList.contains('active')) {
       toggleMenu(false);
     }
-  });
+  }); {% endcomment %}
 });
 {% endjavascript %} 
