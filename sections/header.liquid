@@ -1,0 +1,306 @@
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo Text",
+      "default": "EVIL FOOD SUPPLY"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    }
+  ]
+}
+{% endschema %}
+
+<header class="header-wrapper">
+  <div class="header-container">
+    <button class="header__menu-button" aria-label="Menu" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.00001 5.8556C1.00001 5.38307 1.38308 5 1.85561 5H21.488C21.9606 5 22.3436 5.38307 22.3436 5.8556C22.3436 6.32814 21.9606 6.7112 21.488 6.7112H1.85561C1.38308 6.7112 1.00001 6.32814 1.00001 5.8556ZM5.90813 12.3557C5.90813 11.8832 6.2912 11.5001 6.76373 11.5001H21.488C21.9606 11.5001 22.3436 11.8832 22.3436 12.3557C22.3436 12.8282 21.9606 13.2113 21.488 13.2113H6.76373C6.2912 13.2113 5.90813 12.8282 5.90813 12.3557ZM1.85562 18.0001C1.38308 18.0001 1.00002 18.3832 1.00002 18.8557C1.00002 19.3282 1.38308 19.7113 1.85562 19.7113H11.6718C12.1444 19.7113 12.5274 19.3282 12.5274 18.8557C12.5274 18.3832 12.1444 18.0001 11.6718 18.0001H1.85562Z" fill="#242328"/>
+      </svg>
+    </button>
+
+    <a href="/" class="header__brand">{{ section.settings.logo_text }}</a>
+
+    <div class="header__cart-wrapper">
+      <a href="/cart" class="header__cart">
+        <svg width="24" height="26" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.95872 1.53082C9.34976 1.53082 8.76575 1.77273 8.33515 2.20333C7.90455 2.63393 7.66264 3.21794 7.66264 3.8269V4.09223C8.23105 4.08202 8.85456 4.08202 9.54033 4.08202H10.3781C11.0619 4.08202 11.6864 4.08202 12.2558 4.09223V3.8269C12.2558 3.52529 12.1964 3.22663 12.0809 2.94799C11.9655 2.66935 11.7963 2.41619 11.583 2.20297C11.3696 1.98974 11.1164 1.82064 10.8377 1.70531C10.559 1.58998 10.2603 1.53069 9.95872 1.53082ZM13.7855 4.16162V3.8269C13.7855 2.81197 13.3823 1.83861 12.6647 1.12094C11.947 0.403279 10.9737 9.91821e-05 9.95872 9.91821e-05C8.94379 9.91821e-05 7.97043 0.403279 7.25276 1.12094C6.5351 1.83861 6.13192 2.81197 6.13192 3.8269V4.16162C5.98599 4.17387 5.84618 4.18815 5.70944 4.2055C4.67875 4.33306 3.82971 4.60043 3.10721 5.19945C2.38573 5.79847 1.96632 6.58424 1.65099 7.57411C1.34484 8.53336 1.11421 9.76508 0.824398 11.3152L0.802968 11.4274C0.392735 13.6143 0.0702625 15.3379 0.0100541 16.6962C-0.0511747 18.0891 0.157003 19.2423 0.942774 20.1883C1.72854 21.1353 2.82352 21.5516 4.20321 21.7486C5.55024 21.9404 7.30241 21.9404 9.52808 21.9404H10.3904C12.615 21.9404 14.3682 21.9404 15.7142 21.7486C17.0939 21.5516 18.1899 21.1353 18.9757 20.1883C19.7615 19.2423 19.9676 18.0891 19.9074 16.6962C19.8482 15.3379 19.5247 13.6143 19.1145 11.4274L19.0941 11.3152C18.8032 9.76508 18.5716 8.53234 18.2675 7.57411C17.9511 6.58424 17.5327 5.79847 16.8102 5.19945C16.0888 4.60043 15.2387 4.33204 14.208 4.2055C14.0675 4.18826 13.9266 4.17364 13.7855 4.16162ZM5.89721 5.725C5.0247 5.83215 4.49711 6.03522 4.08483 6.3781C3.67358 6.71894 3.37662 7.19959 3.10925 8.03843C2.83679 8.89563 2.62146 10.0365 2.3194 11.6479C1.89488 13.9103 1.59384 15.5257 1.53976 16.7635C1.48669 17.9779 1.68262 18.682 2.12041 19.2117C2.55922 19.7393 3.21538 20.0607 4.41955 20.2322C5.64413 20.4077 7.28914 20.4097 9.59135 20.4097H10.3261C12.6293 20.4097 14.2723 20.4077 15.4979 20.2332C16.7021 20.0607 17.3582 19.7393 17.797 19.2117C18.2358 18.6831 18.4308 17.9789 18.3787 16.7625C18.3236 15.5267 18.0226 13.9103 17.598 11.6479C17.296 10.0355 17.0817 8.89665 16.8082 8.03843C16.5408 7.19959 16.2449 6.71894 15.8326 6.37708C15.4203 6.03522 14.8938 5.83215 14.0202 5.72398C13.1263 5.61376 11.966 5.61274 10.3261 5.61274H9.59135C7.95144 5.61274 6.79115 5.61376 5.89721 5.725Z" fill="black"/>
+            <path d="M14.0406 13.0113C14.0406 15.2657 12.2131 17.0932 9.95869 17.0932C7.70431 17.0932 5.87677 15.2657 5.87677 13.0113" stroke="black" stroke-width="1.64934"/>
+        </svg>
+        <span class="header__cart-count">{{ cart.item_count | default: 0 }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="header__nav-wrapper">
+    <button class="header__close-button" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <nav class="header__nav">
+      <a href="/pages/overview" class="header__nav-link">
+        <span>Overview</span>
+      </a>
+       <a href="/pages/about" class="header__nav-link">
+        <span>About</span>
+      </a>
+      <a href="/pages/usage" class="header__nav-link">
+        {% comment %} <svg class="header__nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7L12 12L22 7L12 2ZM2 17L12 22L22 17V7L12 12L2 7V17Z" fill="currentColor"/>
+        </svg> {% endcomment %}
+        <span>Usage</span>
+      </a>
+      <a href="/pages/ingredients" class="header__nav-link">
+        {% comment %} <img src="{{ 'ing.png' | asset_url }}" alt="Ingredients" class="header__nav-icon" width="24" height="24"> {% endcomment %}
+        <span>Ingredients</span>
+      </a>
+      <a href="/pages/faqs" class="header__nav-link">
+        {% comment %} <svg class="header__nav-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11 18H13V16H11V18ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C10.9 6 10 6.9 10 8H12C12 7.45 12.45 7 13 7C13.55 7 14 7.45 14 8C14 9 13 9.55 12.25 10.25C11.5 10.95 11 11.74 11 13H13C13 12.21 13.34 11.66 14 11.1C14.66 10.54 15 10 15 8C15 6.9 14.1 6 13 6Z" fill="currentColor"/>
+        </svg> {% endcomment %}
+        <span>FAQs</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+{% stylesheet %}
+.header-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__menu-button {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--color-foreground);
+}
+
+.header__menu-icon {
+  display: block;
+}
+
+.header__brand {
+  font-size: 1.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: rgba(237, 26, 26, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.header__cart-wrapper {
+  position: relative;
+}
+
+.header__cart {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-foreground);
+  padding: 0.5rem;
+}
+
+.header__cart-icon {
+  display: block;
+  width: 20px;
+  height: 22px;
+}
+
+.header__cart-count {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  background: rgba(255, 229, 53, 1);
+  color: #000000;
+  font-size: 12px;
+  font-weight: 600;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__nav-wrapper {
+  display: none;
+  position: fixed;
+  top: 37px;
+  left: 0;
+  width: 50vw;
+  height: 100vh;
+  background:rgba(255, 229, 53, 1);
+  z-index: 1000000;
+  padding-top: 80px;
+  opacity: 0;
+  visibility: hidden;
+
+  {% comment %} transform: translateX(-100%); {% endcomment %}
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  {% comment %} box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1); {% endcomment %}
+}
+.header__nav-wrapper.active {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.header__close-button {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: var(--color-foreground);
+  opacity: 0;
+  transform: translateX(20px);
+  transition: all 0.3s ease;
+}
+
+.header__nav-wrapper.active .header__close-button {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.header__nav {
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-foreground);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 0.5rem 0;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.header__nav-wrapper.active .header__nav-link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.header__nav-link:nth-child(1) { transition-delay: 0.1s; }
+.header__nav-link:nth-child(2) { transition-delay: 0.2s; }
+.header__nav-link:nth-child(3) { transition-delay: 0.3s; }
+.header__nav-link:nth-child(4) { transition-delay: 0.4s; }
+
+.header__nav-link:hover {
+  opacity: 0.7;
+  transform: translateX(10px);
+}
+
+.header__nav-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header-container {
+    padding: 1rem;
+  }
+
+  .header__brand {
+    font-size: 2.5rem;
+  }
+
+  .header__cart-icon {
+    width: 24px;
+    height: 26px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__nav-wrapper {
+    width: 60%;
+  }
+}
+{% endstylesheet %}
+
+{% javascript %}
+document.addEventListener('DOMContentLoaded', function() {
+  const menuButton = document.querySelector('.header__menu-button');
+  const closeButton = document.querySelector('.header__close-button');
+  const navWrapper = document.querySelector('.header__nav-wrapper');
+  
+  function toggleMenu(isOpen) {
+    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+    menuButton.setAttribute('aria-expanded', isOpen);
+    navWrapper.classList.toggle('active', isOpen);
+  }
+
+  menuButton.addEventListener('click', () => toggleMenu(true));
+  closeButton.addEventListener('click', () => toggleMenu(false));
+
+  // Close menu when clicking outside
+  navWrapper.addEventListener('click', (e) => {
+    if (e.target === navWrapper) {
+      toggleMenu(false);
+    }
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navWrapper.classList.contains('active')) {
+      toggleMenu(false);
+    }
+  });
+});
+{% endjavascript %} 

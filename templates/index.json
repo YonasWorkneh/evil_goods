@@ -1,0 +1,61 @@
+{
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "message": "FREE SHIPPING ON ORDERS",
+        "threshold_amount": 50
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+        "logo_text": "EVIL FOOD SUPPLY",
+        "menu": "main-menu"
+      }
+    },
+    "navigation": {
+      "type": "navigation",
+      "settings": {
+        "background_color": "rgba(255, 251, 230, 1)",
+        "link1_name": "OVERVIEW",
+        "link1_url": "/pages/overview",
+        "link2_name": "ABOUT",
+        "link2_url": "/pages/about",
+        "link3_name": "USAGE",
+        "link3_url": "/pages/usage",
+        "link4_name": "INGREDIENTS",
+        "link4_url": "/pages/ingredients",
+        "link5_name": "FAQS",
+        "link5_url": "/pages/faqs"
+      }
+    },
+    "main-product": {
+      "type": "main-product",
+      "settings": {
+        "left_triangle_color": "rgba(255, 248, 204, 1)"
+      }
+    },
+    "main": {
+      "type": "main",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-images": {
+      "type": "product-images",
+      "settings": {
+        "left_triangle_color": "rgba(255, 248, 204, 1)"
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "navigation",
+    "main-product",
+    "product-images",
+    "main"
+  ]
+}

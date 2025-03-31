@@ -1,0 +1,161 @@
+{% schema %}
+{
+  "name": "Navigation",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "rgba(255, 251, 230, 1)"
+    },
+    {
+      "type": "text",
+      "id": "link1_name",
+      "label": "First Link Name",
+      "default": "OVERVIEW"
+    },
+    {
+      "type": "text",
+      "id": "link1_url",
+      "label": "First Link URL",
+      "default": "/pages/overview"
+    },
+    {
+      "type": "text",
+      "id": "link2_name",
+      "label": "Second Link Name",
+      "default": "ABOUT"
+    },
+    {
+      "type": "text",
+      "id": "link2_url",
+      "label": "Second Link URL",
+      "default": "/pages/about"
+    },
+    {
+      "type": "text",
+      "id": "link3_name",
+      "label": "Third Link Name",
+      "default": "USAGE"
+    },
+    {
+      "type": "text",
+      "id": "link3_url",
+      "label": "Third Link URL",
+      "default": "/pages/usage"
+    },
+    {
+      "type": "text",
+      "id": "link4_name",
+      "label": "Fourth Link Name",
+      "default": "INGREDIENTS"
+    },
+    {
+      "type": "text",
+      "id": "link4_url",
+      "label": "Fourth Link URL",
+      "default": "/pages/ingredients"
+    },
+    {
+      "type": "text",
+      "id": "link5_name",
+      "label": "Fifth Link Name",
+      "default": "FAQS"
+    },
+    {
+      "type": "text",
+      "id": "link5_url",
+      "label": "Fifth Link URL",
+      "default": "/pages/faqs"
+    }
+  ]
+}
+{% endschema %}
+
+<nav class="navigation" role="navigation" style="background: {{ section.settings.background_color }};">
+  <div class="navigation__container">
+    <ul class="navigation__list">
+      <li class="navigation__item">
+        <a href="{{ section.settings.link1_url }}" class="navigation__link {% if request.path == section.settings.link1_url %}active{% endif %}">{{ section.settings.link1_name }}</a>
+      </li>
+      <li class="navigation__item">
+        <a href="{{ section.settings.link2_url }}" class="navigation__link {% if request.path == section.settings.link2_url %}active{% endif %}">{{ section.settings.link2_name }}</a>
+      </li>
+      <li class="navigation__item">
+        <a href="{{ section.settings.link3_url }}" class="navigation__link {% if request.path == section.settings.link3_url %}active{% endif %}">{{ section.settings.link3_name }}</a>
+      </li>
+      <li class="navigation__item">
+        <a href="{{ section.settings.link4_url }}" class="navigation__link {% if request.path == section.settings.link4_url %}active{% endif %}">{{ section.settings.link4_name }}</a>
+      </li>
+      <li class="navigation__item">
+        <a href="{{ section.settings.link5_url }}" class="navigation__link {% if request.path == section.settings.link5_url %}active{% endif %}">{{ section.settings.link5_name }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+{% stylesheet %}
+.navigation {
+  padding: .5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.navigation__container {
+  padding: 0 1rem;
+}
+
+.navigation__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.navigation__item {
+  margin: 0;
+}
+
+.navigation__link {
+  text-decoration: none;
+  color: var(--color-foreground);
+  opacity:0.6;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+  position: relative;
+}
+
+.navigation__link:before {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  z-index: 10000;
+  left: 0;
+  width: 0%;
+  height:3px;
+  background:#000;
+  transition: width 0.3s ease;
+}
+.navigation__link:hover:before {
+  width: 100%;
+}
+.navigation__link.active {
+  color: #000;
+}
+.navigation__link.active:before {
+  width: 100%;
+}
+.navigation__link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation__link {
+    font-size: 1.3rem;
+  }
+}
+{% endstylesheet %} 
