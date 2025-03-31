@@ -36,8 +36,38 @@
         "left_triangle_color": "rgba(255, 248, 204, 1)"
       }
     },
-    "main": {
-      "type": "main",
+    "video-section": {
+      "type": "video-section",
+      "blocks": {
+        "video_1": {
+          "type": "video",
+          "settings": {
+            "video": "",
+            "cover_image": "",
+            "title": "5 Main benefits",
+            "duration": "0:24"
+          }
+        },
+        "video_2": {
+          "type": "video",
+          "settings": {
+            "video": "",
+            "cover_image": "",
+            "title": "How to use",
+            "duration": "0:24"
+          }
+        },
+        "video_3": {
+          "type": "video",
+          "settings": {
+            "video": "",
+            "cover_image": "",
+            "title": "ingredients",
+            "duration": "0:24"
+          }
+        }
+      },
+      "block_order": ["video_1", "video_2", "video_3"],
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
@@ -48,6 +78,37 @@
       "settings": {
         "left_triangle_color": "rgba(255, 248, 204, 1)"
       }
+    },
+    "dropdown": {
+      "type": "dropdown",
+      "blocks": {
+        "dropdown_1": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Product Description",
+            "content": "Discover the perfect blend of quality and innovation with Random Cosmetics. Designed for all skin types, this premium cosmetic line offers a flawless finish, long-lasting wear, and skin-nourishing ingredients. Whether you’re looking for a bold statement or a natural glow, Random Cosmetics provides the perfect touch for any occasion."
+          }
+        },
+        "dropdown_2": {
+          "type": "dropdown",
+          "settings": {
+            "title": "Shipping Information",
+            "content": "Orders are processed within 1-2 business days, and delivery typically takes 3-7 business days, depending on your location. Shipping is free for orders over $50, while standard shipping rates apply to smaller orders. Once your order ships, you’ll receive a tracking number to monitor its progress"
+          }
+        },
+        "dropdown_3": {
+          "type": "dropdown",
+          "settings": {
+            "title": "frequently asked questions",
+            "content": ""
+          }
+        }
+      },
+      "block_order": ["dropdown_1", "dropdown_2", "dropdown_3"],
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -56,6 +117,7 @@
     "navigation",
     "main-product",
     "product-images",
-    "main"
+    "video-section",
+    "dropdown"
   ]
 }

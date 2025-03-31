@@ -1,0 +1,14 @@
+<div class="dropdown">
+  <div class="dropdown__container">
+    {% for block in section.blocks %}
+      <div class="dropdown__video" {{ block.shopify_attributes }}>
+                <div class="dropdown__title-wrapper">
+          {% if block.settings.title != blank %}
+                        <div class="video-section__title hidden">{{ block.settings.title }}</div>
+          {% endif %}
+          <div class="dropdown__content hidden">{{ block.settings.content }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

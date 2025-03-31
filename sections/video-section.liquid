@@ -1,0 +1,156 @@
+
+<div class="video-section">
+  <div class="video-section__container">
+    {% for block in section.blocks %}
+      <div class="video-section__video" {{ block.shopify_attributes }}>
+        <div class="video-section__video-wrapper">
+          {% if block.settings.video != blank %}
+            <video 
+              class="video-section__video-element"
+              poster="{{ block.settings.cover_image | img_url: '800x' }}"
+              preload="none"
+              playsinline
+            >
+              <source src="{{ block.settings.video }}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          {% endif %}
+          <div class="video-section__play-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5V19L19 12L8 5Z" fill="white"/>
+            </svg>
+          </div>
+          <div class="video-section__duration">{{ block.settings.duration }}</div>
+            <div class="video-section__title">{{ block.settings.title }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+  .video-section {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+
+  .video-section__container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .video-section__video {
+    flex: 1;
+    aspect-ratio: 16/9;
+    max-width: 400px;
+    height: 230px;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .video-section__video-wrapper {
+    width: 100%;
+    height: 230px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom:4px solid rgba(241, 196, 15, 1);
+  }
+
+  .video-section__video-element {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-section__play-icon {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    z-index: 2;
+  }
+
+  .video-section__play-icon:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+  }
+
+  .video-section__duration {
+    position: absolute;
+    bottom: 2px;
+    right: 5px;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2;
+  }
+  .video-section__title{
+    text-align: center;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Video Section",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Video",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Upload or select a video"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "Cover Image",
+          "info": "Displayed before video plays"
+        },
+        {
+          "type": "text",
+          "id": "duration",
+          "label": "Duration",
+          "default": "0:24"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Section",
+      "blocks": [
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 
